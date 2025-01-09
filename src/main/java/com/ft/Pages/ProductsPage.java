@@ -23,9 +23,17 @@ public class ProductsPage {
     @FindBy(css = ".title") private WebElement productsPageHeading;
 
     By productsHeading = By.cssSelector(".title");
+    By menu = By.id("react-burger-menu-btn");
+    By logoutLink = By.id("logout_sidebar_link");
 
     public String getProductsPageHeading(){
         seleniumWaits.waitForElementVisible(productsHeading);
         return seleniumActions.getTextMessage(productsPageHeading);
+    }
+
+    public void logout(){
+        seleniumActions.clickOnElement(menu);
+        seleniumWaits.waitForElementVisible(logoutLink);
+        seleniumActions.clickOnElement(logoutLink);
     }
 }

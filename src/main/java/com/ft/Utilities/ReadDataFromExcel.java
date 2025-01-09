@@ -4,6 +4,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -16,8 +17,15 @@ import org.apache.poi.xssf.*;
 
 public class ReadDataFromExcel {
 
-    @Test
-    public void readData() throws IOException {
+/*
+    @Test(dataProvider = "loginDetails")
+    public void getData(String number, String email, String password) throws IOException {
+        System.out.println(number + " :: " + email + " :: " + password);
+    }
+*/
+
+    @DataProvider(name="loginDetails")
+    public Object[][] readData() throws IOException {
         File file = new File(System.getProperty("user.dir")+"/src/main/resources/testData.xlsx");
 
         FileInputStream fileInputStream = new FileInputStream(file);
@@ -47,6 +55,6 @@ public class ReadDataFromExcel {
             System.out.println(Arrays.toString(data));
         }
 
-
+        return dataSet;
     }
 }

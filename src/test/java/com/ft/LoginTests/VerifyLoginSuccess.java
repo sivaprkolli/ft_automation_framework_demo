@@ -3,6 +3,7 @@ package com.ft.LoginTests;
 import com.ft.Automation.FTBase;
 import com.ft.Pages.LoginPage;
 import com.ft.Pages.ProductsPage;
+import com.ft.Utilities.ReadDataFromExcel;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -17,10 +18,11 @@ public class VerifyLoginSuccess extends FTBase {
         productsPage = new ProductsPage(driver);
     }
 
-    @Test
-    public void verifyLogin(){
-        loginPage.login("performance_glitch_user", "secret_sauce");
+    @Test(dataProvider = "loginDetails", dataProviderClass = ReadDataFromExcel.class)
+    public void verifyLogin(String number, String email, String password){
+        loginPage.login(email, password);
         String heading = productsPage.getProductsPageHeading();
-        Assert.assertEquals(heading, "Product");
+        Assert.assertEquals(heading, "Products");
+        productsPage.logout();
     }
 }

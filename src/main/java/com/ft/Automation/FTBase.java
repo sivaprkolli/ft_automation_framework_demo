@@ -47,6 +47,14 @@ public class FTBase {
         driver.get(app);
     }
 
+    @Parameters("url")
+    @AfterMethod(dependsOnMethods = "getScreenshotIfTestFails")
+    public void reLoadApplication(ITestResult iTestResult, String app){
+        if (iTestResult.getStatus() == ITestResult.FAILURE){
+            driver.get(app);
+        }
+    }
+
     @AfterSuite
     public void tearDown(){
         driver.quit();

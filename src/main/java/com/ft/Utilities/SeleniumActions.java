@@ -23,6 +23,10 @@ public class SeleniumActions {
         element.click();
     }
 
+    public void clickOnElement(By by){
+        driver.findElement(by).click();
+    }
+
     public void enterValue(WebElement element, String data){
         element.sendKeys(data);
     }
@@ -31,7 +35,4 @@ public class SeleniumActions {
         driver.findElement(by).sendKeys(data);
     }
 
-    public void clickOnElement(By by){
-        driver.findElement(by).click();
-    }
 }

@@ -10,10 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginPage {
 
     private SeleniumActions seleniumActions;
+    private WebDriver driver;
+
 
     public LoginPage(WebDriver driver){
         PageFactory.initElements(driver, this);
         seleniumActions = new SeleniumActions(driver);
+        this.driver = driver;
     }
 
     @FindBy(css = "#user-name") private WebElement userNameInputField;
@@ -27,6 +30,8 @@ public class LoginPage {
     public void login(String username, String password){
         seleniumActions.enterValue(userNameInputField, username);
         seleniumActions.enterValue(passwordInputField, password);
-        seleniumActions.clickOnElement(submitButton);
+        //passwordInputField.submit();
+        //seleniumActions.clickOnElement(submitButton);
+        //driver.findElement(By.cssSelector("")).click();
     }
 }

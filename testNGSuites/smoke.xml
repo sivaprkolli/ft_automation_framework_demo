@@ -5,9 +5,9 @@
     <parameter name="browserName" value="firefox"></parameter>
 
     <test name = "ftSmoke">
-        <parameter name="url" value="https://www.saucedemo.com/"></parameter>
+        <parameter name="url" value="https://www.poundland.co.uk/"></parameter>
         <classes>
-            <class name="com.ft.LoginTests.VerifyLoginSuccess"></class>
+            <class name="com.ft.LoginTests.PoundlandTest"></class>
         </classes>
     </test>
 </suite>

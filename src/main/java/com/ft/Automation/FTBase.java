@@ -13,6 +13,7 @@ import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 
 public class FTBase {
 
@@ -25,6 +26,8 @@ public class FTBase {
                 break;
             case "firefox":
                 driver = new FirefoxDriver();
+                driver.manage().window().maximize();
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
                 break;
             case "safari":
                 driver = new SafariDriver();
